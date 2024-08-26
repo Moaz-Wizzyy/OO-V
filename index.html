@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Calculator</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #1a237e, #3949ab);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(to right, #42a5f5, #1e88e5);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(to right, #1e88e5, #1565c0);
+        }
+        p#result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .signature {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #b0bec5;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Days Calculator</h2>
+        <label for="startDate">Select Start Date:</label>
+        <input type="date" id="startDate">
+        <label for="endDate">Select End Date:</label>
+        <input type="date" id="endDate">
+        <button onclick="calculateDays()">Calculate Days</button>
+        <p id="result"></p>
+        <div class="signature">Created by Moaz Mahdy</div>
+    </div>
+
+    <script>
+        function calculateDays() {
+            var startDate = new Date(document.getElementById("startDate").value);
+            var endDate = new Date(document.getElementById("endDate").value);
+
+            if (startDate && endDate && endDate >= startDate) {
+                var timeDifference = endDate.getTime() - startDate.getTime();
+                var dayDifference = timeDifference / (1000 * 3600 * 24);
+                document.getElementById("result").innerHTML = "Days between: " + dayDifference + " days";
+            } else {
+                document.getElementById("result").innerHTML = "Please select valid dates.";
+            }
+        }
+    </script>
+</body>
+</html>
